@@ -24,17 +24,17 @@ public class TestServiceImpl implements TestService {
 
             printQuestions(questions);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            ioService.printLine("Error loading a test!");
         }
     }
 
     private void printQuestions(List<Question> questions) {
         for (Question q : questions) {
-            System.out.println(q.text());
+            ioService.printLine(q.text());
             for (Answer a : q.answers()) {
-                System.out.println("— " + a.text());
+                ioService.printLine("— " + a.text());
             }
-            System.out.println();
+            ioService.printLine("\n");
         }
     }
 }

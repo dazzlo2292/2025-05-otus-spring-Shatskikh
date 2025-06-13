@@ -4,7 +4,10 @@ import lombok.RequiredArgsConstructor;
 import ru.otus.hw.config.TestFileNameProvider;
 import ru.otus.hw.dao.dto.QuestionDto;
 import ru.otus.hw.domain.Question;
+import ru.otus.hw.exceptions.QuestionReadException;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +22,19 @@ public class CsvQuestionDao implements QuestionDao {
 
     @Override
     public List<Question> findAll() {
-        Reader bufferedReader = readerProvider.getReader(fileNameProvider.getTestFileName());
+        try (Reader bufferedReader = readerProvider.getReader(fileNameProvider.getTestFileName())) {
 
-        List<QuestionDto> questionsDto = questionsParser.parse(bufferedReader);
-        List<Question> questions = new ArrayList<>();
+            List<QuestionDto> questionsDto = questionsParser.parse(bufferedReader);
+            List<Question> questions = new ArrayList<>();
 
-        for (QuestionDto q : questionsDto) {
-            questions.add(q.toDomainObject());
+            for (QuestionDto q : questionsDto) {
+                questions.add(q.toDomainObject());
+            }
+            return questions;
+        } catch (FileNotFoundException e) {
+            throw new QuestionReadException("Error loading questions!");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        return questions;
     }
 }
