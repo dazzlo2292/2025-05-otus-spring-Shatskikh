@@ -32,9 +32,9 @@ public class TestServiceImpl implements TestService {
         for (Question q : questions) {
             ioService.printLine(q.text());
             for (Answer a : q.answers()) {
-                ioService.printLine("— " + a.text());
+                ioService.printFormattedLine("— %s", a.text());
             }
-            ioService.printLine("\n");
+            ioService.printLine("");
         }
     }
 }

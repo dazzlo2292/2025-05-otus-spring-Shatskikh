@@ -6,7 +6,6 @@ import ru.otus.hw.dao.dto.QuestionDto;
 import ru.otus.hw.domain.Question;
 import ru.otus.hw.exceptions.QuestionReadException;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
@@ -31,10 +30,8 @@ public class CsvQuestionDao implements QuestionDao {
                 questions.add(q.toDomainObject());
             }
             return questions;
-        } catch (FileNotFoundException e) {
-            throw new QuestionReadException("Error loading questions!");
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new QuestionReadException("Error loading questions!", e);
         }
     }
 }
