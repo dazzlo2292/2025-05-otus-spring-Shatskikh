@@ -20,21 +20,16 @@ public class TestServiceImpl implements TestService {
 
     @Override
     public TestResult executeTestFor(Student student) {
-        try {
-            ioService.printLine("");
-            ioService.printFormattedLine("Please answer the questions below%n");
-            var questions = questionDao.findAll();
-            var testResult = new TestResult(student);
+        ioService.printLine("");
+        ioService.printFormattedLine("Please answer the questions below%n");
+        var questions = questionDao.findAll();
+        var testResult = new TestResult(student);
 
-            for (var question: questions) {
-                var isAnswerValid = askQuestion(question);
-                testResult.applyAnswer(question, isAnswerValid);
-            }
-            return testResult;
-        } catch (Exception e) {
-            ioService.printLine("Error loading a test!");
-            return null;
+        for (var question : questions) {
+            var isAnswerValid = askQuestion(question);
+            testResult.applyAnswer(question, isAnswerValid);
         }
+        return testResult;
     }
 
     private boolean askQuestion(Question question) {
