@@ -1,4 +1,4 @@
 -------------------------------------
-${spring.banner.color.green}OTUS "Java Spring"${spring.banner.color.default}
-${AnsiColor.RED}Homework 3${AnsiColor.DEFAULT}
+${AnsiColor.RED}OTUS "Java Spring"
+Homework 3${AnsiColor.DEFAULT}
 -------------------------------------

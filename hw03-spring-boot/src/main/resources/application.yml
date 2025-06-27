@@ -1,8 +1,7 @@
 spring:
-  banner:
-    color:
-      green: "\u001B[32m"
-      default: "\u001B[0m"
+  output:
+    ansi:
+      enabled: ALWAYS
   messages:
     baseName: messages
     encoding: UTF-8
