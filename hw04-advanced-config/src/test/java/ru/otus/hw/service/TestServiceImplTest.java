@@ -16,7 +16,7 @@ import java.util.List;
 import static org.mockito.Mockito.*;
 
 @DisplayName("Тестирование TestService")
-@SpringBootTest
+@SpringBootTest(classes = TestServiceImpl.class)
 public class TestServiceImplTest {
 
     @MockitoBean
