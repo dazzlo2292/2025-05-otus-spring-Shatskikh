@@ -6,8 +6,7 @@ import org.springframework.shell.standard.ShellComponent;
 import org.springframework.shell.standard.ShellMethod;
 import org.springframework.shell.standard.ShellMethodAvailability;
 import org.springframework.shell.standard.ShellOption;
-import ru.otus.hw.domain.Student;
-import ru.otus.hw.security.InMemoryLoginContext;
+import ru.otus.hw.security.LoginContext;
 import ru.otus.hw.service.LocalizedIOService;
 import ru.otus.hw.service.TestRunnerService;
 
@@ -19,7 +18,7 @@ public class ApplicationCommands {
 
     private final TestRunnerService testRunnerService;
 
-    private final InMemoryLoginContext loginContext;
+    private final LoginContext loginContext;
 
     @ShellMethod(value = "Login command. Format: login {firstName} {lastName}", key = {"l", "login"})
     public void login(@ShellOption(defaultValue = "Unknown") String firstName,
@@ -31,8 +30,7 @@ public class ApplicationCommands {
     @ShellMethod(value = "Run test command", key = {"run"})
     @ShellMethodAvailability(value = "isRunTestCommandAvailable")
     public void runTest() {
-        Student currentStudent = new Student(loginContext.getFirstName(), loginContext.getLastName());
-        testRunnerService.run(currentStudent);
+        testRunnerService.run(loginContext.getLoggedUser());
     }
 
     private Availability isRunTestCommandAvailable() {

@@ -2,6 +2,7 @@ package ru.otus.hw.security;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;
+import ru.otus.hw.domain.Student;
 
 import static java.util.Objects.nonNull;
 
@@ -9,18 +10,20 @@ import static java.util.Objects.nonNull;
 @Component
 public class InMemoryLoginContext implements LoginContext{
 
-    private String firstName;
-
-    private String lastName;
+    private Student currentStudent;
 
     @Override
     public void login(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        currentStudent = new Student(firstName, lastName);
+    }
+
+    @Override
+    public Student getLoggedUser() {
+        return currentStudent;
     }
 
     @Override
     public boolean isUserLoggedIn() {
-        return nonNull(firstName) && nonNull(lastName);
+        return nonNull(currentStudent);
     }
 }
