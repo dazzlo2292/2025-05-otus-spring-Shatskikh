@@ -32,10 +32,14 @@ public class JdbcAuthorRepository implements AuthorRepository {
     @Override
     public Optional<Author> findById(long id) {
         Map<String, Object> params = Collections.singletonMap("id", id);
-        return Optional.ofNullable(jdbc.queryForObject(
+        List<Author> authors = jdbc.query(
                 "select id, full_name from authors where id = :id;",
                 params, new AuthorRowMapper()
-        ));
+        );
+        if (authors.size() == 1) {
+            return Optional.of(authors.get(0));
+        }
+        return Optional.empty();
     }
 
     private static class AuthorRowMapper implements RowMapper<Author> {
