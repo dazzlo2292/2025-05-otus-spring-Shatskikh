@@ -29,7 +29,7 @@ public class JdbcBookRepository implements BookRepository {
     @Override
     public Optional<Book> findById(long id) {
         Map<String, Object> params = Collections.singletonMap("id", id);
-        return Optional.ofNullable(jdbc.queryForObject(
+        List<Book> books = jdbc.query(
                 """
                         select b.id, b.title, b.author_id, a.full_name as author_name, b.genre_id, g.name as genre_name
                         from books b
@@ -38,7 +38,11 @@ public class JdbcBookRepository implements BookRepository {
                         where b.id = :id;
                     """,
                 params, new BookRowMapper()
-        ));
+        );
+        if (books.size() == 1) {
+            return Optional.of(books.get(0));
+        }
+        return Optional.empty();
     }
 
     @Override
@@ -47,8 +51,8 @@ public class JdbcBookRepository implements BookRepository {
                 """
                         select b.id, b.title, b.author_id, a.full_name as author_name, b.genre_id, g.name as genre_name
                         from books b
-                        join authors a on a.id = b.author_id
-                        join genres g on g.id = b.genre_id;
+                        inner join authors a on a.id = b.author_id
+                        inner join genres g on g.id = b.genre_id;
                     """,
                 new BookRowMapper());
     }
