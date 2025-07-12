@@ -44,8 +44,8 @@ public class JdbcGenreRepositoryTest {
     }
 
     private static List<Genre> getDbGenres() {
-        return IntStream.range(1, 7).boxed()
-                .map(id -> new Genre(id, "Genre_" + id))
+        return IntStream.range(1, 4).boxed()
+                .map(id -> new Genre(id, "Test_Genre_" + id))
                 .toList();
     }
 }

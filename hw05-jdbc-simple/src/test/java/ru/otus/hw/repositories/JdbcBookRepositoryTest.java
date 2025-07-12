@@ -103,20 +103,20 @@ class JdbcBookRepositoryTest {
     }
 
     private static List<Author> getDbAuthors() {
-        return IntStream.range(1, 7).boxed()
-                .map(id -> new Author(id, "Author_" + id))
+        return IntStream.range(1, 4).boxed()
+                .map(id -> new Author(id, "Test_Author_" + id))
                 .toList();
     }
 
     private static List<Genre> getDbGenres() {
-        return IntStream.range(1, 7).boxed()
-                .map(id -> new Genre(id, "Genre_" + id))
+        return IntStream.range(1, 4).boxed()
+                .map(id -> new Genre(id, "Test_Genre_" + id))
                 .toList();
     }
 
     private static List<Book> getDbBooks(List<Author> dbAuthors, List<Genre> dbGenres) {
-        return IntStream.range(1, 7).boxed()
-                .map(id -> new Book(id, "BookTitle_" + id, dbAuthors.get(id - 1), dbGenres.get(id - 1)))
+        return IntStream.range(1, 4).boxed()
+                .map(id -> new Book(id, "Test_BookTitle_" + id, dbAuthors.get(id - 1), dbGenres.get(id - 1)))
                 .toList();
     }
 
