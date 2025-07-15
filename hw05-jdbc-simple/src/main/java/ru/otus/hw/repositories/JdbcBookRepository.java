@@ -33,8 +33,8 @@ public class JdbcBookRepository implements BookRepository {
                 """
                         select b.id, b.title, b.author_id, a.full_name as author_name, b.genre_id, g.name as genre_name
                         from books b
-                        join authors a on a.id = b.author_id
-                        join genres g on g.id = b.genre_id
+                        inner join authors a on a.id = b.author_id
+                        inner join genres g on g.id = b.genre_id
                         where b.id = :id;
                     """,
                 params, new BookRowMapper()
