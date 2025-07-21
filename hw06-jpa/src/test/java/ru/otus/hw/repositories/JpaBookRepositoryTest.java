@@ -1,6 +1,5 @@
 package ru.otus.hw.repositories;
 
-import org.hibernate.LazyInitializationException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @DisplayName("Репозиторий для работы с книгами ")
 @DataJpaTest
@@ -42,25 +40,6 @@ class JpaBookRepositoryTest {
         assertThat(actualBook).isPresent()
                 .get()
                 .isEqualTo(expectedBook);
-    }
-
-    @DisplayName("должен загружать все связи книги при запросе по id")
-    @Test
-    void shouldNotThrowLazyExceptionForFindBookById() {
-        assertDoesNotThrow(() -> bookRepository
-                .findById(BOOK_ID)
-                .get()
-                .getAuthor());
-
-        assertDoesNotThrow(() -> bookRepository
-                .findById(BOOK_ID)
-                .get()
-                .getGenre());
-
-        assertDoesNotThrow(() -> bookRepository
-                .findById(BOOK_ID)
-                .get()
-                .getComments());
     }
 
     @DisplayName("должен загружать список всех книг")

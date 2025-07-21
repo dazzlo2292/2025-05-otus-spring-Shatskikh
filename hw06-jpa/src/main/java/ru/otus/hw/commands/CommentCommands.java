@@ -15,6 +15,7 @@ public class CommentCommands {
 
     private final CommentConverter commentConverter;
 
+    // acbbid 1
     @ShellMethod(value = "Find all comment for book", key = "acbbid")
     public String findAllCommentsByBookId(long bookId) {
         return commentService.findAllByBookId(bookId).stream()
@@ -22,6 +23,7 @@ public class CommentCommands {
                 .collect(Collectors.joining("," + System.lineSeparator()));
     }
 
+    // cbid 1
     @ShellMethod(value = "Find comment by id", key = "cbid")
     public String findCommentById(long id) {
         return commentService.findById(id)

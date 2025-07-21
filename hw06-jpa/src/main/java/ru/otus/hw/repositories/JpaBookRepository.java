@@ -46,7 +46,6 @@ public class JpaBookRepository implements BookRepository {
         TypedQuery<Book> query = entityManager.createQuery(
                 """
                         select b from Book b
-                        left join fetch b.comments
                    """, Book.class
         );
 

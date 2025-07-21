@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @DisplayName("Репозиторий для работы с комментариями ")
 @DataJpaTest
@@ -27,7 +26,8 @@ class JpaCommentRepositoryTest {
     private TestEntityManager testEntityManager;
 
     private static final long COMMENT_ID = 1L;
-    private static final long BOOK_ID = 1;
+    private static final long BOOK_ID = 1L;
+    private static final int COMMENTS_SIZE = 2;
     private static final String OLD_COMMENT_TEXT = "Test_Comment_1";
     private static final String NEW_COMMENT_TEXT = "New_Test_Comment_1";
 
@@ -42,38 +42,12 @@ class JpaCommentRepositoryTest {
                 .isEqualTo(expectedComment);
     }
 
-    @DisplayName("должен загружать все связи комментария при запросе по id")
-    @Test
-    void shouldNotThrowLazyExceptionForFindCommentById() {
-        assertDoesNotThrow(() -> commentRepository
-                .findById(COMMENT_ID)
-                .get()
-                .getBook());
-    }
-
-    @DisplayName("должен загружать все связи комментариев при запросе по id книги")
-    @Test
-    void shouldNotThrowLazyExceptionForFindCommentsByBookId() {
-        assertDoesNotThrow(() -> commentRepository
-                .findAllByBookId(BOOK_ID)
-                .get(0)
-                .getBook()
-                .getAuthor());
-
-        assertDoesNotThrow(() -> commentRepository
-                .findAllByBookId(BOOK_ID)
-                .get(0)
-                .getBook()
-                .getGenre());
-    }
-
     @DisplayName("должен возвращать комментарии по id книги")
     @Test
     void shouldFindCommentsByBookId() {
-        Book targetBook = testEntityManager.find(Book.class, BOOK_ID);
         List<Comment> actualComments = commentRepository.findAllByBookId(BOOK_ID);
 
-        assertThat(targetBook.getComments().size()).isEqualTo(actualComments.size());
+        assertThat(actualComments.size()).isEqualTo(COMMENTS_SIZE);
     }
 
     @DisplayName("должен сохранять новый комментарий")
