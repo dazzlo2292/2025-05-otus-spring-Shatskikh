@@ -44,7 +44,7 @@ public class JpaCommentRepository implements CommentRepository {
         TypedQuery<Comment> query = entityManager.createQuery(
                 """
                         select c from Comment c
-                        left join fetch c.book b
+                        left join c.book b
                         where b.id = :id
                    """, Comment.class);
 
