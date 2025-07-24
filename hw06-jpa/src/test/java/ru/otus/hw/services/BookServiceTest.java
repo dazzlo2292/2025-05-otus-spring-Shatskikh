@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 @DisplayName("Сервис для работы с книгами ")
 @DataJpaTest
 @Import({BookServiceImpl.class, JpaAuthorRepository.class, JpaGenreRepository.class, JpaBookRepository.class})
+@Transactional(propagation = Propagation.NOT_SUPPORTED)
 public class BookServiceTest {
 
     @Autowired
@@ -26,7 +27,6 @@ public class BookServiceTest {
 
     @DisplayName("должен загружать все связи книги при запросе по id")
     @Test
-    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     void shouldNotThrowLazyExceptionForFindBookById() {
         assertDoesNotThrow(() -> bookService
                 .findById(BOOK_ID)
@@ -41,7 +41,6 @@ public class BookServiceTest {
 
     @DisplayName("должен загружать все связи книги при запросе всех книг")
     @Test
-    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     void shouldNotThrowLazyExceptionForFindAllBooks() {
         assertDoesNotThrow(() -> bookService
                 .findAll()
