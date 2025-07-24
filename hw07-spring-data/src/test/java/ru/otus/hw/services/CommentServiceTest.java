@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 @DisplayName("Сервис для работы с комментариями ")
 @DataJpaTest
 @Import({CommentServiceImpl.class})
+@Transactional(propagation = Propagation.NOT_SUPPORTED)
 public class CommentServiceTest {
 
     @Autowired
@@ -23,7 +24,6 @@ public class CommentServiceTest {
 
     @DisplayName("должен загружать все связи комментария при запросе по id")
     @Test
-    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     void shouldNotThrowLazyExceptionForFindCommentById() {
         assertDoesNotThrow(() -> commentService
                 .findById(COMMENT_ID)
@@ -34,7 +34,6 @@ public class CommentServiceTest {
 
     @DisplayName("должен загружать все связи комментариев при запросе по id книги")
     @Test
-    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     void shouldNotThrowLazyExceptionForFindCommentsByBookId() {
         assertDoesNotThrow(() -> commentService
                 .findAllByBookId(BOOK_ID)

@@ -27,6 +27,7 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findById(id);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Book> findAll() {
         return bookRepository.findAll();
