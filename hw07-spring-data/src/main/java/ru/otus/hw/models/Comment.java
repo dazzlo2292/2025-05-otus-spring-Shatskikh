@@ -11,11 +11,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.FetchType;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
+import lombok.EqualsAndHashCode;
 
-import java.util.Objects;
 
 
 @Data
@@ -35,30 +36,7 @@ public class Comment {
 
     @ManyToOne(targetEntity = Book.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
     private Book book;
-
-    @Override
-    public String toString() {
-        return "Comment{" +
-                "id=" + id +
-                ", text='" + text + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Comment comment = (Comment) o;
-        return id == comment.id && Objects.equals(text, comment.text);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, text);
-    }
 }

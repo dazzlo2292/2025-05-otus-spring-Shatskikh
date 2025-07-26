@@ -7,44 +7,42 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import ru.otus.hw.converters.CommentConverter;
+import ru.otus.hw.models.Comment;
+
+import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 @DisplayName("Сервис для работы с комментариями ")
 @DataJpaTest
-@Import({CommentServiceImpl.class})
+@Import({CommentServiceImpl.class, CommentConverter.class})
 @Transactional(propagation = Propagation.NOT_SUPPORTED)
 public class CommentServiceTest {
 
     @Autowired
     private CommentService commentService;
 
+    @Autowired
+    private CommentConverter commentConverter;
+
     private static final long COMMENT_ID = 1L;
     private static final long BOOK_ID = 1L;
 
-    @DisplayName("должен загружать все связи комментария при запросе по id")
+    @DisplayName("не должен бросать LazyInitializationException при использовании комментария, полученного по id")
     @Test
     void shouldNotThrowLazyExceptionForFindCommentById() {
-        assertDoesNotThrow(() -> commentService
-                .findById(COMMENT_ID)
-                .get()
-                .getBook()
-                .getTitle());
+        Optional<Comment> comment = commentService.findById(COMMENT_ID);
+
+        assertDoesNotThrow(() -> commentConverter.commentToString(comment.get()));
     }
 
-    @DisplayName("должен загружать все связи комментариев при запросе по id книги")
+    @DisplayName("не должен бросать LazyInitializationException при использовании комментариев, полученных по id книги")
     @Test
     void shouldNotThrowLazyExceptionForFindCommentsByBookId() {
-        assertDoesNotThrow(() -> commentService
-                .findAllByBookId(BOOK_ID)
-                .get(0)
-                .getBook()
-                .getAuthor());
+        List<Comment> comments = commentService.findAllByBookId(BOOK_ID);
 
-        assertDoesNotThrow(() -> commentService
-                .findAllByBookId(BOOK_ID)
-                .get(0)
-                .getBook()
-                .getGenre());
+        assertDoesNotThrow(() -> commentConverter.commentToString(comments.get(0)));
     }
 }
