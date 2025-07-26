@@ -7,7 +7,9 @@ import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import ru.otus.hw.models.Book;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static org.springframework.data.jpa.repository.EntityGraph.EntityGraphType.FETCH;
@@ -26,17 +28,10 @@ public class JpaBookRepository implements BookRepository {
     public Optional<Book> findById(long id) {
         EntityGraph<?> entityGraph = entityManager.getEntityGraph("book-author-genre-entity-graph");
 
-        TypedQuery<Book> query = entityManager.createQuery(
-                """
-                        select b from Book b
-                        where b.id = :id
-                   """, Book.class
-        );
+        Map<String, Object> properties = new HashMap<>();
+        properties.put(FETCH.getKey(), entityGraph);
 
-        query.setParameter("id", id);
-        query.setHint(FETCH.getKey(), entityGraph);
-
-        return Optional.ofNullable(query.getSingleResult());
+        return Optional.ofNullable(entityManager.find(Book.class, id, properties));
     }
 
     @Override

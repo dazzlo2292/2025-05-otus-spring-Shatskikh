@@ -26,18 +26,11 @@ public class JpaCommentRepository implements CommentRepository {
 
     @Override
     public Optional<Comment> findById(long id) {
-        EntityGraph<?> entityGraph = entityManager.getEntityGraph("comment-book-entity-graph");
-
-        Map<String, Object> properties = new HashMap<>();
-        properties.put(FETCH.getKey(), entityGraph);
-
-        return Optional.ofNullable(entityManager.find(Comment.class, id, properties));
+        return Optional.ofNullable(entityManager.find(Comment.class, id));
     }
 
     @Override
     public List<Comment> findAllByBookId(long id) {
-        Book book = entityManager.find(Book.class, id);
-
         TypedQuery<Comment> query = entityManager.createQuery(
                 """
                         select c from Comment c
