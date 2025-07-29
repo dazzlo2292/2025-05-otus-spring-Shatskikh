@@ -8,7 +8,7 @@ import ru.otus.hw.models.Comment;
 
 
 @RequiredArgsConstructor
-public class CommentRepositoryCustomImpl implements CommentRepositoryCustom{
+public class CommentRepositoryCustomImpl implements CommentRepositoryCustom {
 
     private final MongoTemplate mongoTemplate;
 

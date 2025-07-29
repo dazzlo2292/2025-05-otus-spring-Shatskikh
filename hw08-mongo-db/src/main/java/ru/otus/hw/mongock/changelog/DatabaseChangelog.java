@@ -14,9 +14,11 @@ import ru.otus.hw.repositories.GenreRepository;
 public class DatabaseChangelog {
 
     private Author firstAuthor;
+
     private Author secondAuthor;
 
     private Genre firstGenre;
+
     private Genre secondGenre;
 
     @ChangeSet(order = "000", id = "dropDb", author = "admin", runAlways = true)
@@ -25,19 +27,19 @@ public class DatabaseChangelog {
     }
 
     @ChangeSet(order = "001", id = "initAuthors", author = "admin", runAlways = true)
-    public void initAuthors(AuthorRepository repository){
+    public void initAuthors(AuthorRepository repository) {
         firstAuthor = repository.save(new Author("1", "Author_1"));
         secondAuthor = repository.save(new Author("2", "Author_2"));
     }
 
     @ChangeSet(order = "002", id = "initGenres", author = "admin", runAlways = true)
-    public void initGenres(GenreRepository repository){
+    public void initGenres(GenreRepository repository) {
         firstGenre = repository.save(new Genre("1", "Genre_1"));
-        secondGenre= repository.save(new Genre("2", "Genre_2"));
+        secondGenre = repository.save(new Genre("2", "Genre_2"));
     }
 
     @ChangeSet(order = "003", id = "initBooks", author = "admin", runAlways = true)
-    public void initBooks(BookRepository repository){
+    public void initBooks(BookRepository repository) {
         repository.save(new Book("1", "BookTitle_1", firstAuthor, firstGenre));
         repository.save(new Book("2", "BookTitle_2", secondAuthor, secondGenre));
     }
