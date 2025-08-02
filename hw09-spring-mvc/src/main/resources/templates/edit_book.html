@@ -53,7 +53,7 @@
 
     <div class="row">
         <select class="form-control" id="book-genre-select" th:field="*{genre}">
-            <option value="0">Select genre жанр</option>
+            <option value="0">Select genre</option>
             <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.name}"></option>
         </select>
         <div class="errors" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}">Wrong book genre error</div>

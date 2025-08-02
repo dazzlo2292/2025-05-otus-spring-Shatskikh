@@ -82,12 +82,7 @@ public class BookController {
 
     @GetMapping("/add/book")
     public String addPage(Model model) {
-        List<BookDto> books = bookService.findAll().stream()
-                .map(BookDto::fromDomainObject).toList();
-        long nextId = findNextId(books);
-
         BookDto newBook = new BookDto();
-        newBook.setId(nextId);
         model.addAttribute("book", newBook);
 
         List<AuthorDto> authors = authorService.findAll().stream()
@@ -105,15 +100,5 @@ public class BookController {
     public String deleteBook(@RequestParam("id") long id) {
         bookService.deleteById(id);
         return "redirect:/";
-    }
-
-    private long findNextId(List<BookDto> books) {
-        long maxId = 0;
-        for (BookDto b : books) {
-            if (maxId < b.getId()) {
-                maxId = b.getId();
-            }
-        }
-        return maxId + 1;
     }
 }
