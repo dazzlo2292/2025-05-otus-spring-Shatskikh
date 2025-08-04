@@ -18,8 +18,7 @@ public class CommentController {
 
     @GetMapping("/comments")
     public String listPage(@RequestParam("book_id") long bookId, Model model) {
-        List<CommentDto> comments = commentService.findAllByBookId(bookId).stream()
-                .map(CommentDto::fromDomainObject).toList();
+        List<CommentDto> comments = commentService.findAllByBookId(bookId);
         model.addAttribute("comments", comments);
         return "comments";
     }

@@ -41,19 +41,18 @@ public class BookControllerTest {
     private GenreService genreService;
 
 
-    Author author = new Author(1L, "Test_Author_1");
-    Genre genre = new Genre(1L, "Test_Genre_1");
-    List<Book> books = List.of(
-            new Book(1L, "Test_Book_1", author, genre),
-            new Book(2L, "Test_Book_2", author, genre)
+    AuthorDto author = new AuthorDto(1L, "Test_Author_1");
+    GenreDto genre = new GenreDto(1L, "Test_Genre_1");
+    List<BookDto> books = List.of(
+            new BookDto(1L, "Test_Book_1", author.toDomainObject(), genre.toDomainObject()),
+            new BookDto(2L, "Test_Book_2", author.toDomainObject(), genre.toDomainObject())
     );
 
     @Test
     void shouldRenderListPageWithCorrectViewAndModelAttributes() throws Exception {
         when(bookService.findAll()).thenReturn(books);
 
-        List<BookDto> expectedBooks = books.stream()
-                .map(BookDto::fromDomainObject).toList();
+        List<BookDto> expectedBooks = books;
 
         mvc.perform(get("/"))
                 .andExpect(view().name("books"))
@@ -66,9 +65,9 @@ public class BookControllerTest {
         when(authorService.findAll()).thenReturn(List.of(author));
         when(genreService.findAll()).thenReturn(List.of(genre));
 
-        BookDto expectedBook = BookDto.fromDomainObject(books.get(0));
-        List<AuthorDto> expectedAuthors = List.of(AuthorDto.fromDomainObject(author));
-        List<GenreDto> expectedGenres = List.of(GenreDto.fromDomainObject(genre));
+        BookDto expectedBook = books.get(0);
+        List<AuthorDto> expectedAuthors = List.of(author);
+        List<GenreDto> expectedGenres = List.of(genre);
 
         mvc.perform(get("/edit/book").param("id", "1"))
                 .andExpect(view().name("edit_book"))
@@ -83,9 +82,9 @@ public class BookControllerTest {
         when(authorService.findAll()).thenReturn(List.of(author));
         when(genreService.findAll()).thenReturn(List.of(genre));
 
-        BookDto expectedBook = BookDto.fromDomainObject(new Book(3L, null, null, null));
-        List<AuthorDto> expectedAuthors = List.of(AuthorDto.fromDomainObject(author));
-        List<GenreDto> expectedGenres = List.of(GenreDto.fromDomainObject(genre));
+        BookDto expectedBook = BookDto.fromDomainObject(new Book(0, null, null, null));
+        List<AuthorDto> expectedAuthors = List.of(author);
+        List<GenreDto> expectedGenres = List.of(genre);
 
         mvc.perform(get("/add/book"))
                 .andExpect(view().name("add_book"))

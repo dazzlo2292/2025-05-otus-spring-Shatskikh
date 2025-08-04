@@ -19,7 +19,6 @@ import ru.otus.hw.services.BookService;
 import ru.otus.hw.services.GenreService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,27 +32,22 @@ public class BookController {
 
     @GetMapping("/")
     public String listPage(Model model) {
-        List<BookDto> books = bookService.findAll().stream()
-                .map(BookDto::fromDomainObject).toList();
+        List<BookDto> books = bookService.findAll();
         model.addAttribute("books", books);
         return "books";
     }
 
     @GetMapping("/edit/book")
     public String editPage(@RequestParam("id") long id, Model model) {
-        Optional<BookDto> book = bookService.findById(id)
-                .map(BookDto::fromDomainObject);
-        if (book.isEmpty()) {
-            throw new EntityNotFoundException("Book not found");
-        }
-        model.addAttribute("book", book.get());
+        BookDto book = bookService.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Book with id %d not found".formatted(id)));
 
-        List<AuthorDto> authors = authorService.findAll().stream()
-                .map(AuthorDto::fromDomainObject).toList();
+        model.addAttribute("book", book);
+
+        List<AuthorDto> authors = authorService.findAll();
         model.addAttribute("authors", authors);
 
-        List<GenreDto> genres = genreService.findAll().stream()
-                .map(GenreDto::fromDomainObject).toList();
+        List<GenreDto> genres = genreService.findAll();
         model.addAttribute("genres", genres);
 
         return "edit_book";
@@ -66,12 +60,10 @@ public class BookController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("book", book);
 
-            List<AuthorDto> authors = authorService.findAll().stream()
-                    .map(AuthorDto::fromDomainObject).toList();
+            List<AuthorDto> authors = authorService.findAll();
             model.addAttribute("authors", authors);
 
-            List<GenreDto> genres = genreService.findAll().stream()
-                    .map(GenreDto::fromDomainObject).toList();
+            List<GenreDto> genres = genreService.findAll();
             model.addAttribute("genres", genres);
 
             return "edit_book";
@@ -85,12 +77,10 @@ public class BookController {
         BookDto newBook = new BookDto();
         model.addAttribute("book", newBook);
 
-        List<AuthorDto> authors = authorService.findAll().stream()
-                .map(AuthorDto::fromDomainObject).toList();
+        List<AuthorDto> authors = authorService.findAll();
         model.addAttribute("authors", authors);
 
-        List<GenreDto> genres = genreService.findAll().stream()
-                .map(GenreDto::fromDomainObject).toList();
+        List<GenreDto> genres = genreService.findAll();
         model.addAttribute("genres", genres);
 
         return "add_book";

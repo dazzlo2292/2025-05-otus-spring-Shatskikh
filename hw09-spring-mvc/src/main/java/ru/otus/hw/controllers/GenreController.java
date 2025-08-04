@@ -17,8 +17,7 @@ public class GenreController {
 
     @GetMapping("/genres")
     public String listPage(Model model) {
-        List<GenreDto> genres = genreService.findAll().stream()
-                .map(GenreDto::fromDomainObject).toList();
+        List<GenreDto> genres = genreService.findAll();
         model.addAttribute("genres", genres);
         return "genres";
     }

@@ -17,8 +17,7 @@ public class AuthorController {
 
     @GetMapping("/authors")
     public String listPage(Model model) {
-        List<AuthorDto> authors = authorService.findAll().stream()
-                .map(AuthorDto::fromDomainObject).toList();
+        List<AuthorDto> authors = authorService.findAll();
         model.addAttribute("authors", authors);
         return "authors";
     }
