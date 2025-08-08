@@ -15,6 +15,7 @@ import ru.otus.hw.rest.exceptions.EntityNotFoundException;
 import ru.otus.hw.services.BookService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,11 +25,16 @@ public class BookController {
 
     @GetMapping("/api/v1/book")
     public List<BookDto> getAllBooks() {
-        List<BookDto> books = bookService.findAll();
-        if (books.isEmpty()) {
-            throw new EntityNotFoundException("Books not found!");
+        return bookService.findAll();
+    }
+
+    @GetMapping("/api/v1/book/{id}")
+    public BookDto getBook(@PathVariable("id") long id) {
+        Optional<BookDto> book = bookService.findById(id);
+        if (book.isEmpty()) {
+            throw new EntityNotFoundException("Book not found!");
         }
-        return books;
+        return book.get();
     }
 
     @PostMapping("/api/v1/book")

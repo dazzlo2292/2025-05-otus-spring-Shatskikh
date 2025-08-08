@@ -15,6 +15,7 @@ import ru.otus.hw.rest.exceptions.ErrorDto;
 import ru.otus.hw.services.BookService;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -44,7 +45,7 @@ public class BookControllerTest {
             new BookDto(2L, "Test_Book_2", author, genre)
     );
 
-    private final static ErrorDto ERROR = new ErrorDto("error", "Books not found!");
+    private final static ErrorDto ERROR = new ErrorDto("error", "Book not found!");
 
     private final static long BOOK_ID = 1L;
 
@@ -59,10 +60,23 @@ public class BookControllerTest {
     }
 
     @Test
-    void shouldReturnExpectedErrorWhenBooksNotFound() throws Exception {
-        when(bookService.findAll()).thenReturn(List.of());
+    void shouldReturnCorrectBook() throws Exception {
+        when(bookService.findById(BOOK_ID)).thenReturn(Optional.ofNullable(books.get(0)));
 
-        mvc.perform(get("/api/v1/book"))
+        String url = "/api/v1/book/" + BOOK_ID;
+
+        mvc.perform(get(url))
+                .andExpect(status().isOk())
+                .andExpect(content().json(mapper.writeValueAsString(books.get(0))));
+    }
+
+    @Test
+    void shouldReturnExpectedErrorWhenBookNotFound() throws Exception {
+        when(bookService.findById(BOOK_ID)).thenReturn(Optional.empty());
+
+        String url = "/api/v1/book/" + BOOK_ID;
+
+        mvc.perform(get(url))
                 .andExpect(status().isNotFound())
                 .andExpect(content().json(mapper.writeValueAsString(ERROR)));
     }

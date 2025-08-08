@@ -36,6 +36,7 @@ public class BookPagesController {
                 .orElseThrow(() -> new EntityNotFoundException("Book with id %d not found".formatted(id)));
 
         model.addAttribute("book", book);
+        model.addAttribute("bookId", id);
 
         List<AuthorDto> authors = authorService.findAll();
         model.addAttribute("authors", authors);

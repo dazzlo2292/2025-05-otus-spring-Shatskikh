@@ -2,13 +2,15 @@ package ru.otus.hw.rest.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import ru.otus.hw.models.Genre;
 
+@NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class GenreDto {
 
-    private long id;
+    private Long id;
 
     private String name;
 
