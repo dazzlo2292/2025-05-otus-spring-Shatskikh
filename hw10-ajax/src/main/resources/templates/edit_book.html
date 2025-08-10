@@ -30,14 +30,16 @@
         const pathBookId = /*[[ ${bookId} ]]*/;
         const apiUrl = `/api/v1/book/${pathBookId}`;
 
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(book => {
-                document.getElementById('id-input').value = book.id;
-                document.getElementById('book-title-input').value = book.title;
-                document.getElementById('book-author-select').value = book.author.id;
-                document.getElementById('book-genre-select').value = book.genre.id;
-            });
+        function loadBook() {
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(book => {
+                    document.getElementById('id-input').value = book.id;
+                    document.getElementById('book-title-input').value = book.title;
+                    document.getElementById('book-author-select').value = book.author.id;
+                    document.getElementById('book-genre-select').value = book.genre.id;
+                });
+        }
 
         function saveBook() {
             const idInput = document.getElementById("id-input")
@@ -69,7 +71,7 @@
         }
     </script>
 </head>
-<body>
+<body onload="loadBook()">
 
 <form id="edit-book-form" th:object="${book}">
     <h3>Book Info:</h3>
