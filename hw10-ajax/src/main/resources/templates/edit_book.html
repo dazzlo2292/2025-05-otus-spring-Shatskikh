@@ -35,6 +35,8 @@
             .then(book => {
                 document.getElementById('id-input').value = book.id;
                 document.getElementById('book-title-input').value = book.title;
+                document.getElementById('book-author-select').value = book.author.id;
+                document.getElementById('book-genre-select').value = book.genre.id;
             });
 
         function saveBook() {
@@ -81,7 +83,7 @@
     </div>
 
     <div class="row">
-        <select class="form-control" id="book-author-select" th:field="*{author.id}">
+        <select class="form-control" id="book-author-select">
             <option value="" disabled selected>Select author</option>
             <option th:each="author : ${authors}"
                     th:value="${author.id}"
@@ -91,7 +93,7 @@
     </div>
 
     <div class="row">
-        <select class="form-control" id="book-genre-select" th:field="*{genre.id}">
+        <select class="form-control" id="book-genre-select">
             <option value="" disabled selected>Select genre</option>
             <option th:each="genre : ${genres}"
                     th:value="${genre.id}"
