@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Comments for book</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .comments {
+            border: 1px solid steelblue;
+            width: 300px;
+            border-collapse: collapse;
+        }
+
+        .comments tr td, th {
+            padding: 5px;
+            border: 1px solid steelblue;
+        }
+
+        .comments td:first-child {
+            width: 10px;
+        }
+
+        .comments td:last-child {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+<h3>Comments:</h3>
+
+<table class="comments">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Text</th>
+        <th>Book Title</th>
+    </tr>
+    </thead>
+    <tbody id = "commentsTable">
+    </tbody>
+</table>
+
+<script th:inline="javascript">
+    const pathBookId = /*[[ ${bookId} ]]*/;
+    const url = `/api/v1/book/${pathBookId}/comment`;
+
+    const tableBody = document.getElementById('commentsTable');
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => data.forEach(item => {
+            const row = document.createElement('tr');
+
+            const idCell = document.createElement('td');
+            idCell.textContent = item.id;
+            row.appendChild(idCell);
+
+            const textCell = document.createElement('td');
+            textCell.textContent = item.text;
+            row.appendChild(textCell);
+
+            const bookTitleCell = document.createElement('td');
+            bookTitleCell.textContent = item.bookTitle;
+            row.appendChild(bookTitleCell);
+
+            tableBody.appendChild(row);
+        }));
+</script>
+
+<div class="row">
+    <a href="books.html" th:href="@{/}">
+        <button type="button">Back</button></a>
+</div>
+</body>
+</html>

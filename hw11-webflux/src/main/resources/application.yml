@@ -1,0 +1,16 @@
+spring:
+  flyway:
+    enabled: true
+    url: jdbc:postgresql://localhost:5432/database
+    user: user
+    password: password
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/database
+    username: user
+    password: password
+    pool:
+      enabled: true
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true

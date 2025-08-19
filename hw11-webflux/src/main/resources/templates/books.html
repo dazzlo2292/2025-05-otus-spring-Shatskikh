@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>All books</title>
+    <style type="text/css">
+        body {
+            padding: 50px;
+        }
+
+        .books {
+            border: 1px solid steelblue;
+            width: 300px;
+            border-collapse: collapse;
+        }
+
+        .books tr td, th {
+            padding: 5px;
+            border: 1px solid steelblue;
+        }
+
+        .books td:last-child, td:first-child {
+            width: 50px;
+        }
+    </style>
+</head>
+<body>
+<h3>Pages:</h3>
+<table>
+    <tr>
+        <td>
+            <a href="/authors">Authors</a>
+        </td>
+        <td>
+            <a href="/genres">Genres</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>Books:</h3>
+
+<table class="books">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Comments</th>
+            <th>Edit</th>
+        </tr>
+    </thead>
+    <tbody id = "booksTable">
+    </tbody>
+</table>
+
+<script th:inline="javascript">
+    const url = `/api/v1/book`;
+
+    const tableBody = document.getElementById('booksTable');
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => data.forEach(item => {
+            const bookId = item.id;
+
+            const row = document.createElement('tr');
+
+            const idCell = document.createElement('td');
+            idCell.textContent = item.id;
+            row.appendChild(idCell);
+
+            const titleCell = document.createElement('td');
+            titleCell.textContent = item.title;
+            row.appendChild(titleCell);
+
+            const authorFullNameCell = document.createElement('td');
+            authorFullNameCell.textContent = item.authorName;
+            row.appendChild(authorFullNameCell);
+
+            const genreNameCell = document.createElement('td');
+            genreNameCell.textContent = item.genreName;
+            row.appendChild(genreNameCell);
+
+            const commentsCell = document.createElement('td');
+            const commentsLink = document.createElement('a');
+            commentsLink.href = `/comments?book_id=${bookId}`;
+            commentsLink.textContent = 'Comments';
+            commentsCell.appendChild(commentsLink);
+            row.appendChild(commentsCell);
+
+            const editBookCell = document.createElement('td');
+            const editBookLink = document.createElement('a');
+            editBookLink.href = `/edit/book?id=${bookId}`;
+            editBookLink.textContent = 'Edit';
+            editBookCell.appendChild(editBookLink);
+            row.appendChild(editBookCell);
+
+            const deleteBookCell = document.createElement('td');
+            const deleteButton = document.createElement('button');
+            deleteButton.textContent = "Delete";
+            deleteButton.className = "submit-btn";
+
+            const deleteApiUrl = `/api/v1/book/${bookId}`;
+            deleteButton.addEventListener('click', async () => {
+                    const response = await fetch(deleteApiUrl, {
+                    method: 'DELETE'})
+            });
+
+            deleteButton.addEventListener('click', async () => {
+                    window.location.href = '/';
+            });
+
+            deleteBookCell.appendChild(deleteButton);
+            row.appendChild(deleteBookCell);
+
+            tableBody.appendChild(row);
+        }));
+</script>
+
+<div>
+    <form th:action="@{/add/book}" method="get">
+        <button type="submit">Add book</button>
+    </form>
+</div>
+</body>
+</html>
