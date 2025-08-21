@@ -4,8 +4,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import ru.otus.hw.repositories.BookRepositoryCustom;
 import ru.otus.hw.rest.dto.BookDto;
+import ru.otus.hw.rest.dto.BookInfoDto;
 import ru.otus.hw.rest.exceptions.EntityNotFoundException;
 import ru.otus.hw.models.Book;
 import ru.otus.hw.repositories.AuthorRepository;
@@ -22,17 +22,16 @@ public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
 
-    private final BookRepositoryCustom bookRepositoryCustom;
-
     @Override
-    public Mono<BookDto> findById(long id) {
+    public Mono<BookInfoDto> findById(long id) {
         return bookRepository.findById(id)
-                .map(BookDto::fromDomainObject);
+                .map(BookInfoDto::fromDomainObject);
     }
 
     @Override
-    public Flux<BookDto> findAll() {
-        return bookRepositoryCustom.findAll();
+    public Flux<BookInfoDto> findAll() {
+        return bookRepository.findAllBooksWithAuthorAndGenre()
+                .map(BookInfoDto::fromDomainObject);
     }
 
     @Override
@@ -41,9 +40,9 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Mono<BookDto> save(BookDto book) {
-        var authorId = book.getAuthorId();
-        var genreId = book.getGenreId();
+    public Mono<BookDto> save(BookInfoDto book) {
+        var authorId = book.getAuthor().getId();
+        var genreId = book.getGenre().getId();
 
         var author = authorRepository.findById(authorId)
                 .switchIfEmpty(Mono.error(
@@ -56,10 +55,8 @@ public class BookServiceImpl implements BookService {
 
         Book newBook = new Book(book.getId(),
                 book.getTitle(),
-                book.getAuthorId(),
-                book.getAuthorName(),
-                book.getGenreId(),
-                book.getGenreName());
+                authorId,
+                genreId);
 
         return bookRepository.save(newBook)
                 .map(BookDto::fromDomainObject);

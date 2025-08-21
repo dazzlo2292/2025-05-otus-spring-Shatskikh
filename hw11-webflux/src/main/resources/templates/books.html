@@ -76,11 +76,11 @@
             row.appendChild(titleCell);
 
             const authorFullNameCell = document.createElement('td');
-            authorFullNameCell.textContent = item.authorName;
+            authorFullNameCell.textContent = item.author.fullName;
             row.appendChild(authorFullNameCell);
 
             const genreNameCell = document.createElement('td');
-            genreNameCell.textContent = item.genreName;
+            genreNameCell.textContent = item.genre.name;
             row.appendChild(genreNameCell);
 
             const commentsCell = document.createElement('td');

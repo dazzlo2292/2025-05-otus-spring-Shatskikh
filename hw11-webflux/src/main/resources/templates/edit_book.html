@@ -36,8 +36,8 @@
                 .then(book => {
                     document.getElementById('id-input').value = book.id;
                     document.getElementById('book-title-input').value = book.title;
-                    document.getElementById('book-author-select').value = book.authorName;
-                    document.getElementById('book-genre-select').value = book.genreName;
+                    document.getElementById('book-author-select').value = book.author.fullName;
+                    document.getElementById('book-genre-select').value = book.genre.name;
                 });
         }
 

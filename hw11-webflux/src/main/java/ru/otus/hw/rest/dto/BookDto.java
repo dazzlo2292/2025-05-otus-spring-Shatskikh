@@ -16,14 +16,10 @@ public class BookDto {
 
     private Long authorId;
 
-    private String authorName;
-
     private Long genreId;
 
-    private String genreName;
-
     public Book toDomainObject() {
-        return new Book(id, title, authorId, authorName, genreId, genreName);
+        return new Book(id, title, authorId, genreId);
     }
 
     public static BookDto fromDomainObject(Book book) {
@@ -31,9 +27,7 @@ public class BookDto {
                 book.getId(),
                 book.getTitle(),
                 book.getAuthorId(),
-                book.getAuthorName(),
-                book.getGenreId(),
-                book.getGenreName()
+                book.getGenreId()
         );
     }
 }

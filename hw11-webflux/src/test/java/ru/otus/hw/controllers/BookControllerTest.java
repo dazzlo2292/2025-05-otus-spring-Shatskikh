@@ -9,11 +9,13 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import ru.otus.hw.models.Author;
+import ru.otus.hw.models.BookInfo;
 import ru.otus.hw.models.Genre;
 import ru.otus.hw.repositories.*;
 import ru.otus.hw.rest.controllers.BookController;
 import ru.otus.hw.rest.dto.BookDto;
 import ru.otus.hw.models.Book;
+import ru.otus.hw.rest.dto.BookInfoDto;
 import ru.otus.hw.services.BookServiceImpl;
 
 
@@ -37,15 +39,16 @@ public class BookControllerTest {
     @MockBean
     private BookRepository bookRepository;
 
-    @MockBean
-    private BookRepositoryCustom bookRepositoryCustom;
-
-    private static final Long BOOK_ID = 1L;
+    private static final long BOOK_ID = 1L;
 
     @Test
-    void shouldGetAllBooks() {
-        when(bookRepositoryCustom.findAll())
-                .thenReturn(Flux.just(new BookDto(1L, "Test_Book_1", 1L, "Test_Author_1", 1L, "Test_Genre_1")));
+    void shouldGetAllBooksWithAuthorAndGenre() {
+        when(bookRepository.findAllBooksWithAuthorAndGenre())
+                .thenReturn(Flux.just(new BookInfo(
+                        1L,
+                        "Test_Book_1",
+                        new Author(1L, "Test_Author_1"),
+                        new Genre(1L, "Test_Genre_1"))));
 
         webTestClient.get().uri("/api/v1/book")
                 .exchange()
@@ -57,7 +60,11 @@ public class BookControllerTest {
     @Test
     void shouldGetBookById() {
         when(bookRepository.findById(BOOK_ID))
-                .thenReturn(Mono.just(new Book(1L, "Test_Book_1", 1L, "Test_Author_1", 1L, "Test_Genre_1")));
+                .thenReturn(Mono.just(new BookInfo(
+                        1L,
+                        "Test_Book_1",
+                        new Author(1L, "Test_Author_1"),
+                        new Genre(1L, "Test_Genre_1"))));
 
         webTestClient.get().uri("/api/v1/book/1")
                 .exchange()
@@ -70,8 +77,12 @@ public class BookControllerTest {
 
     @Test
     void shouldSaveBook() {
-        BookDto newBbookDto = new BookDto(1L, "Test_Book_1", 1L, "Test_Author_1", 1L, "Test_Genre_1");
-        Book savedBook = new Book(1L, "Test_Book_1", 1L, "Test_Author_1", 1L, "Test_Genre_1");
+        BookInfoDto newBookInfoDto = new BookInfoDto(
+                1L,
+                "Test_Book_1",
+                new Author(1L, "Test_Author_1"),
+                new Genre(1L, "Test_Genre_1"));
+        Book savedBook = new Book(1L, "Test_Book_1", 1L, 1L);
 
         when(authorRepository.findById(1L)).thenReturn(Mono.just(new Author(1L, "Test_Author_1")));
         when(genreRepository.findById(1L)).thenReturn(Mono.just(new Genre(1L, "Test_Genre_1")));
@@ -80,7 +91,7 @@ public class BookControllerTest {
                 .thenReturn(Mono.just(savedBook));
 
         webTestClient.post().uri("/api/v1/book")
-                .bodyValue(newBbookDto)
+                .bodyValue(newBookInfoDto)
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(BookDto.class)
