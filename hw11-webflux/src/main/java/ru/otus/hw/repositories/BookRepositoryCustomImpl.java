@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import ru.otus.hw.models.Author;
-import ru.otus.hw.models.BookInfo;
+import ru.otus.hw.models.Book;
 import ru.otus.hw.models.Genre;
 
 @Repository
@@ -36,7 +36,7 @@ public class BookRepositoryCustomImpl implements BookRepositoryCustom {
     }
 
     @Override
-    public Mono<BookInfo> findById(long id) {
+    public Mono<Book> findById(long id) {
         return template.getDatabaseClient().inConnection(connection ->
                 Mono.from(connection.createStatement(Q_BOOK_WITH_AUTHOR_AND_GENRE)
                                 .bind(0, id)
@@ -45,15 +45,15 @@ public class BookRepositoryCustomImpl implements BookRepositoryCustom {
     }
 
     @Override
-    public Flux<BookInfo> findAllBooksWithAuthorAndGenre() {
+    public Flux<Book> findAllBooksWithAuthorAndGenre() {
         return template.getDatabaseClient().inConnectionMany(connection ->
                 Flux.from(connection.createStatement(Q_BOOKS_WITH_AUTHOR_AND_GENRE)
                                 .execute())
                         .flatMap(result -> result.map(this::mapper)));
     }
 
-    private BookInfo mapper(Readable selectedRecord) {
-        return new BookInfo(
+    private Book mapper(Readable selectedRecord) {
+        return new Book(
                 selectedRecord.get("id", Long.class),
                 selectedRecord.get("title", String.class),
                 new Author(

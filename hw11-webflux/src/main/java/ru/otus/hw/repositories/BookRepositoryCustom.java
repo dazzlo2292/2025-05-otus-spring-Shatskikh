@@ -2,10 +2,10 @@ package ru.otus.hw.repositories;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-import ru.otus.hw.models.BookInfo;
+import ru.otus.hw.models.Book;
 
 public interface BookRepositoryCustom {
-    Mono<BookInfo> findById(long id);
+    Mono<Book> findById(long id);
 
-    Flux<BookInfo> findAllBooksWithAuthorAndGenre();
+    Flux<Book> findAllBooksWithAuthorAndGenre();
 }

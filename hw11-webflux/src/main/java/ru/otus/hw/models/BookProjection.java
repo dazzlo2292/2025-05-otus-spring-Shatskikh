@@ -1,6 +1,10 @@
 package ru.otus.hw.models;
 
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.ToString;
+import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
@@ -8,17 +12,19 @@ import org.springframework.data.relational.core.mapping.Table;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookInfo {
+@Table(name = "books")
+public class BookProjection {
 
+    @Id
     private long id;
 
     private String title;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Author author;
+    private Long authorId;
 
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
-    private Genre genre;
+    private Long genreId;
 }

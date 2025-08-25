@@ -2,16 +2,16 @@ package ru.otus.hw.services;
 
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import ru.otus.hw.rest.dto.BookProjectionDto;
 import ru.otus.hw.rest.dto.BookDto;
-import ru.otus.hw.rest.dto.BookInfoDto;
 
 
 public interface BookService {
-    Mono<BookInfoDto> findById(long id);
+    Mono<BookDto> findById(long id);
 
-    Flux<BookInfoDto> findAll();
+    Flux<BookDto> findAll();
 
-    Mono<BookDto> save(BookInfoDto book);
+    Mono<BookProjectionDto> save(BookDto book);
 
     Mono<Void> deleteById(long id);
 }

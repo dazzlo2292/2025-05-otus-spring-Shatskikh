@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import ru.otus.hw.rest.dto.BookProjectionDto;
 import ru.otus.hw.rest.dto.BookDto;
-import ru.otus.hw.rest.dto.BookInfoDto;
 import ru.otus.hw.services.BookService;
 
 
@@ -23,19 +23,19 @@ public class BookController {
     private final BookService bookService;
 
     @GetMapping("/api/v1/book")
-    public Flux<BookInfoDto> getAllBooks() {
+    public Flux<BookDto> getAllBooks() {
         return bookService.findAll();
     }
 
     @GetMapping("/api/v1/book/{id}")
-    public Mono<BookInfoDto> getBook(@PathVariable("id") long id) {
-        Mono<BookInfoDto> book = bookService.findById(id);
+    public Mono<BookDto> getBook(@PathVariable("id") long id) {
+        Mono<BookDto> book = bookService.findById(id);
         return book;
     }
 
     @PostMapping("/api/v1/book")
-    public Mono<ResponseEntity<BookDto>> addBook(@Valid @RequestBody BookInfoDto book) {
-        Mono<BookDto> savedBook = bookService.save(book);
+    public Mono<ResponseEntity<BookProjectionDto>> addBook(@Valid @RequestBody BookDto book) {
+        Mono<BookProjectionDto> savedBook = bookService.save(book);
         return savedBook
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(ResponseEntity.notFound().build());

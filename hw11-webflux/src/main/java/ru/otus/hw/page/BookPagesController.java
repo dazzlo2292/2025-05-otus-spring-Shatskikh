@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import reactor.core.publisher.Mono;
 import ru.otus.hw.rest.dto.AuthorDto;
-import ru.otus.hw.rest.dto.BookDto;
+import ru.otus.hw.rest.dto.BookProjectionDto;
 import ru.otus.hw.rest.dto.GenreDto;
 import ru.otus.hw.services.AuthorService;
 import ru.otus.hw.services.GenreService;
@@ -48,7 +48,7 @@ public class BookPagesController {
 
     @GetMapping("/add/book")
     public Mono<String> addBookPage(Model model) {
-        BookDto newBook = new BookDto();
+        BookProjectionDto newBook = new BookProjectionDto();
         Mono<List<AuthorDto>> authorsMono = authorService.findAll().collectList();
         Mono<List<GenreDto>> genresMono = genreService.findAll().collectList();
 
