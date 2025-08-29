@@ -16,13 +16,13 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http)
             throws Exception {
         http
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authorize) -> authorize
                         .anyRequest().authenticated()
                 )
                 .formLogin(fm -> fm
                         .defaultSuccessUrl("/", true)
-                        .permitAll())
-        ;
+                        .permitAll());
 
         return http.build();
     }
