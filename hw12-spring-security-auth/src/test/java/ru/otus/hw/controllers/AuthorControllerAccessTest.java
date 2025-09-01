@@ -32,7 +32,7 @@ public class AuthorControllerAccessTest {
     @ParameterizedTest(name = "{0} {1} for user ({2}) should return {4} status")
     @MethodSource("getTestData")
     void shouldReturnExpectedStatus(String method, String url, String userName, String[] roles, int status) throws Exception {
-        var request = RequestBuilder.method2RequestBuilder(method, url);
+        var request = RequestBuilderUtils.method2RequestBuilder(method, url);
 
         if (nonNull(userName)) {
             request = request.with(user(userName).roles(roles));
