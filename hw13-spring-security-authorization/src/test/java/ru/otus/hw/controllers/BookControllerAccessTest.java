@@ -56,19 +56,19 @@ public class BookControllerAccessTest {
         var adminRoles = new String[] {"ADMIN"};
         return Stream.of(
                 Arguments.of("get", "/", "user", userRoles, 200),
-                Arguments.of("get", "/", null, null, 401),
+                Arguments.of("get", "/", null, null, 302),
                 Arguments.of("get", "/edit/book", "user", userRoles, 403),
                 Arguments.of("get", "/edit/book", "admin", adminRoles, 200),
-                Arguments.of("get", "/edit/book", null, null, 401),
+                Arguments.of("get", "/edit/book", null, null, 302),
                 Arguments.of("post", "/edit/book", "user", userRoles, 403),
                 Arguments.of("post", "/edit/book", "admin", adminRoles, 200),
-                Arguments.of("post", "/edit/book", null, null, 401),
+                Arguments.of("post", "/edit/book", null, null, 302),
                 Arguments.of("get", "/add/book", "user", userRoles, 403),
                 Arguments.of("get", "/add/book", "admin", adminRoles, 200),
-                Arguments.of("get", "/add/book", null, null, 401),
+                Arguments.of("get", "/add/book", null, null, 302),
                 Arguments.of("delete", "/delete/book", "user", userRoles, 403),
                 Arguments.of("delete", "/delete/book", "admin", adminRoles, 200),
-                Arguments.of("delete", "/delete/book", null, null, 401)
+                Arguments.of("delete", "/delete/book", null, null, 302)
         );
     }
 }
