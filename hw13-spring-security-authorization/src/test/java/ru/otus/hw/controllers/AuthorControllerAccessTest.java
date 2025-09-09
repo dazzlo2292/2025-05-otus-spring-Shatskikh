@@ -43,9 +43,11 @@ public class AuthorControllerAccessTest {
     }
 
     public static Stream<Arguments> getTestData() {
-        var roles = new String[] {"USER"};
+        var userRoles = new String[] {"USER"};
+        var adminRoles = new String[] {"ADMIN"};
         return Stream.of(
-              Arguments.of("get", "/authors", "user", roles, 200),
+              Arguments.of("get", "/authors", "user", userRoles, 200),
+              Arguments.of("get", "/authors", "admin", adminRoles, 200),
               Arguments.of("get", "/authors", null, null, 302)
         );
     }

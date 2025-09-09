@@ -43,9 +43,11 @@ public class CommentControllerAccessTest {
     }
 
     public static Stream<Arguments> getTestData() {
-        var roles = new String[] {"USER"};
+        var userRoles = new String[] {"USER"};
+        var adminRoles = new String[] {"ADMIN"};
         return Stream.of(
-                Arguments.of("get", "/comments", "user", roles, 200),
+                Arguments.of("get", "/comments", "user", userRoles, 200),
+                Arguments.of("get", "/comments", "admin", adminRoles, 200),
                 Arguments.of("get", "/comments", null, null, 302)
         );
     }

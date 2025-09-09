@@ -56,6 +56,8 @@ public class BookControllerAccessTest {
         var adminRoles = new String[] {"ADMIN"};
         return Stream.of(
                 Arguments.of("get", "/", "user", userRoles, 200),
+                Arguments.of("get", "/", "user", userRoles, 200),
+                Arguments.of("get", "/", "admin", adminRoles, 200),
                 Arguments.of("get", "/", null, null, 302),
                 Arguments.of("get", "/edit/book", "user", userRoles, 403),
                 Arguments.of("get", "/edit/book", "admin", adminRoles, 200),

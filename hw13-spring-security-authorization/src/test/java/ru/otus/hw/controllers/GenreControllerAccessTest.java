@@ -43,9 +43,11 @@ public class GenreControllerAccessTest {
     }
 
     public static Stream<Arguments> getTestData() {
-        var roles = new String[] {"USER"};
+        var userRoles = new String[] {"USER"};
+        var adminRoles = new String[] {"ADMIN"};
         return Stream.of(
-                Arguments.of("get", "/genres", "user", roles, 200),
+                Arguments.of("get", "/genres", "user", userRoles, 200),
+                Arguments.of("get", "/genres", "admin", adminRoles, 200),
                 Arguments.of("get", "/genres", null, null, 302)
         );
     }
