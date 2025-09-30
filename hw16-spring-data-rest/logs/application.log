@@ -1,87 +1,108 @@
-2025-09-29 23:19:32.002 [main] INFO  ru.otus.hw.Application - Starting Application using Java 17.0.12 with PID 9040 (C:\Users\annam\IdeaProjects\2025-05-otus-spring-Shatskikh\hw16-spring-data-rest\target\classes started by annam in C:\Users\annam\IdeaProjects\2025-05-otus-spring-Shatskikh\hw16-spring-data-rest)
-2025-09-29 23:19:32.003 [main] INFO  ru.otus.hw.Application - No active profile set, falling back to 1 default profile: "default"
-2025-09-29 23:19:32.906 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-29 23:19:32.962 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 48 ms. Found 5 JPA repository interfaces.
-2025-09-29 23:19:33.682 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-09-29 23:19:33.691 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-09-29 23:19:33.692 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
-2025-09-29 23:19:33.759 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-09-29 23:19:33.760 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1722 ms
-2025-09-29 23:19:34.064 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-09-29 23:19:34.207 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:maindb user=SA
-2025-09-29 23:19:34.209 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-09-29 23:19:34.264 [main] INFO  liquibase.database - Set default schema name to PUBLIC
-2025-09-29 23:19:34.478 [main] INFO  liquibase.changelog - Reading resource: db/changelog/structure/001--create_start_tables.sql
-2025-09-29 23:19:34.487 [main] INFO  liquibase.changelog - Reading resource: db/changelog/data/001--insert_start_data.sql
-2025-09-29 23:19:34.524 [main] INFO  liquibase.changelog - Creating database history table with name: PUBLIC.DATABASECHANGELOG
-2025-09-29 23:19:34.801 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-29 23:19:34.850 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
-2025-09-29 23:19:34.882 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-09-29 23:19:35.158 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-29 23:19:35.862 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-29 23:19:35.864 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-29 23:19:36.324 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-29 23:19:36.483 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
-2025-09-29 23:19:37.077 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 17 endpoints beneath base path '/actuator'
-2025-09-29 23:19:37.630 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2025-09-29 23:19:37.640 [main] INFO  ru.otus.hw.Application - Started Application in 5.999 seconds (process running for 6.287)
-2025-09-29 23:19:37.743 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-29 23:19:37.746 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2025-09-29 23:19:37.749 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
-2025-09-29 23:19:45.475 [main] INFO  ru.otus.hw.Application - Starting Application using Java 17.0.12 with PID 12692 (C:\Users\annam\IdeaProjects\2025-05-otus-spring-Shatskikh\hw16-spring-data-rest\target\classes started by annam in C:\Users\annam\IdeaProjects\2025-05-otus-spring-Shatskikh\hw16-spring-data-rest)
-2025-09-29 23:19:45.477 [main] INFO  ru.otus.hw.Application - No active profile set, falling back to 1 default profile: "default"
-2025-09-29 23:19:46.319 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-09-29 23:19:46.373 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 45 ms. Found 5 JPA repository interfaces.
-2025-09-29 23:19:47.099 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-09-29 23:19:47.111 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-09-29 23:19:47.111 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
-2025-09-29 23:19:47.184 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-09-29 23:19:47.184 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1674 ms
-2025-09-29 23:19:47.476 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-09-29 23:19:47.620 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:maindb user=SA
-2025-09-29 23:19:47.621 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-09-29 23:19:47.677 [main] INFO  liquibase.database - Set default schema name to PUBLIC
-2025-09-29 23:19:47.877 [main] INFO  liquibase.changelog - Reading resource: db/changelog/structure/001--create_start_tables.sql
-2025-09-29 23:19:47.888 [main] INFO  liquibase.changelog - Reading resource: db/changelog/data/001--insert_start_data.sql
-2025-09-29 23:19:47.924 [main] INFO  liquibase.changelog - Creating database history table with name: PUBLIC.DATABASECHANGELOG
-2025-09-29 23:19:48.002 [main] INFO  liquibase.changelog - Reading from PUBLIC.DATABASECHANGELOG
-2025-09-29 23:19:48.035 [main] INFO  liquibase.lockservice - Successfully acquired change log lock
-2025-09-29 23:19:48.036 [main] INFO  liquibase.command - Using deploymentId: 9177188036
-2025-09-29 23:19:48.038 [main] INFO  liquibase.changelog - Reading from PUBLIC.DATABASECHANGELOG
-2025-09-29 23:19:48.047 [main] INFO  liquibase.ui - Running Changeset: db/changelog/structure/001--create_start_tables.sql::raw::includeAll
-2025-09-29 23:19:48.071 [main] INFO  liquibase.changelog - Custom SQL executed
-2025-09-29 23:19:48.071 [main] INFO  liquibase.changelog - ChangeSet db/changelog/structure/001--create_start_tables.sql::raw::includeAll ran successfully in 23ms
-2025-09-29 23:19:48.077 [main] INFO  liquibase.ui - Running Changeset: db/changelog/data/001--insert_start_data.sql::raw::includeAll
-2025-09-29 23:19:48.089 [main] INFO  liquibase.changelog - Custom SQL executed
-2025-09-29 23:19:48.089 [main] INFO  liquibase.changelog - ChangeSet db/changelog/data/001--insert_start_data.sql::raw::includeAll ran successfully in 12ms
-2025-09-29 23:19:48.101 [main] INFO  liquibase.util - UPDATE SUMMARY
-2025-09-29 23:19:48.101 [main] INFO  liquibase.util - Run:                          2
-2025-09-29 23:19:48.101 [main] INFO  liquibase.util - Previously run:               0
-2025-09-29 23:19:48.102 [main] INFO  liquibase.util - Filtered out:                 0
-2025-09-29 23:19:48.102 [main] INFO  liquibase.util - -------------------------------
-2025-09-29 23:19:48.102 [main] INFO  liquibase.util - Total change sets:            2
-2025-09-29 23:19:48.104 [main] INFO  liquibase.util - Update summary generated
-2025-09-29 23:19:48.108 [main] INFO  liquibase.command - Update command completed successfully.
-2025-09-29 23:19:48.108 [main] INFO  liquibase.ui - Liquibase: Update has been successful. Rows affected: 4
-2025-09-29 23:19:48.110 [main] INFO  liquibase.lockservice - Successfully released change log lock
-2025-09-29 23:19:48.112 [main] INFO  liquibase.command - Command execution complete
-2025-09-29 23:19:48.211 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-09-29 23:19:48.256 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
-2025-09-29 23:19:48.284 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-09-29 23:19:48.537 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-09-29 23:19:49.252 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-09-29 23:19:49.254 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-09-29 23:19:49.651 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-09-29 23:19:49.769 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
-2025-09-29 23:19:50.310 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 17 endpoints beneath base path '/actuator'
-2025-09-29 23:19:50.842 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2025-09-29 23:19:50.852 [main] INFO  ru.otus.hw.Application - Started Application in 5.741 seconds (process running for 6.065)
-2025-09-29 23:19:56.200 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-09-29 23:19:56.200 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-09-29 23:19:56.202 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2025-09-29 23:20:03.672 [http-nio-8080-exec-8] INFO  r.otus.hw.controllers.BookController - Method called - GET /edit/book with param:3
-2025-09-29 23:20:05.077 [http-nio-8080-exec-10] INFO  r.otus.hw.controllers.BookController - Method called - POST /edit/book with param:Book(id=3, title=BookTitle_3)
-2025-09-29 23:20:06.243 [http-nio-8080-exec-4] INFO  r.otus.hw.controllers.BookController - Method called - DELETE /delete/book with param:3
-2025-09-29 23:20:28.471 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-29 23:20:28.473 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2025-09-29 23:20:28.476 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-09-30 08:45:04.404 [main] INFO  ru.otus.hw.Application - Starting Application using Java 17.0.12 with PID 10060 (C:\Users\annam\IdeaProjects\2025-05-otus-spring-Shatskikh\hw16-spring-data-rest\target\classes started by annam in C:\Users\annam\IdeaProjects\2025-05-otus-spring-Shatskikh\hw16-spring-data-rest)
+2025-09-30 08:45:04.420 [main] INFO  ru.otus.hw.Application - No active profile set, falling back to 1 default profile: "default"
+2025-09-30 08:45:06.014 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-30 08:45:06.120 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 95 ms. Found 5 JPA repository interfaces.
+2025-09-30 08:45:07.528 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-09-30 08:45:07.550 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-09-30 08:45:07.550 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2025-09-30 08:45:07.651 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-09-30 08:45:07.651 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3140 ms
+2025-09-30 08:45:08.774 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-09-30 08:45:08.817 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn1: url=jdbc:h2:mem:maindb user=SA
+2025-09-30 08:45:08.823 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-09-30 08:45:09.033 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2025-09-30 08:45:09.897 [main] INFO  liquibase.changelog - Reading resource: db/changelog/structure/001--create_start_tables.sql
+2025-09-30 08:45:09.924 [main] INFO  liquibase.changelog - Reading resource: db/changelog/data/001--insert_start_data.sql
+2025-09-30 08:45:10.056 [main] INFO  liquibase.changelog - Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2025-09-30 08:45:10.685 [main] INFO  liquibase.changelog - Reading from PUBLIC.DATABASECHANGELOG
+2025-09-30 08:45:10.759 [main] INFO  liquibase.lockservice - Successfully acquired change log lock
+2025-09-30 08:45:10.759 [main] INFO  liquibase.command - Using deploymentId: 9211110759
+2025-09-30 08:45:10.759 [main] INFO  liquibase.changelog - Reading from PUBLIC.DATABASECHANGELOG
+2025-09-30 08:45:10.794 [main] INFO  liquibase.ui - Running Changeset: db/changelog/structure/001--create_start_tables.sql::raw::includeAll
+2025-09-30 08:45:10.866 [main] INFO  liquibase.changelog - Custom SQL executed
+2025-09-30 08:45:10.866 [main] INFO  liquibase.changelog - ChangeSet db/changelog/structure/001--create_start_tables.sql::raw::includeAll ran successfully in 69ms
+2025-09-30 08:45:10.886 [main] INFO  liquibase.ui - Running Changeset: db/changelog/data/001--insert_start_data.sql::raw::includeAll
+2025-09-30 08:45:10.906 [main] INFO  liquibase.changelog - Custom SQL executed
+2025-09-30 08:45:10.912 [main] INFO  liquibase.changelog - ChangeSet db/changelog/data/001--insert_start_data.sql::raw::includeAll ran successfully in 25ms
+2025-09-30 08:45:10.919 [main] INFO  liquibase.util - UPDATE SUMMARY
+2025-09-30 08:45:10.919 [main] INFO  liquibase.util - Run:                          2
+2025-09-30 08:45:10.919 [main] INFO  liquibase.util - Previously run:               0
+2025-09-30 08:45:10.919 [main] INFO  liquibase.util - Filtered out:                 0
+2025-09-30 08:45:10.919 [main] INFO  liquibase.util - -------------------------------
+2025-09-30 08:45:10.919 [main] INFO  liquibase.util - Total change sets:            2
+2025-09-30 08:45:10.930 [main] INFO  liquibase.util - Update summary generated
+2025-09-30 08:45:10.934 [main] INFO  liquibase.command - Update command completed successfully.
+2025-09-30 08:45:10.934 [main] INFO  liquibase.ui - Liquibase: Update has been successful. Rows affected: 4
+2025-09-30 08:45:10.941 [main] INFO  liquibase.lockservice - Successfully released change log lock
+2025-09-30 08:45:10.941 [main] INFO  liquibase.command - Command execution complete
+2025-09-30 08:45:11.219 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-30 08:45:11.403 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2025-09-30 08:45:11.516 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-09-30 08:45:12.401 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-30 08:45:14.685 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-30 08:45:14.689 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-30 08:45:15.480 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-30 08:45:15.677 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2025-09-30 08:45:16.498 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 2 endpoints beneath base path '/actuator'
+2025-09-30 08:45:17.475 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-09-30 08:45:17.493 [main] INFO  ru.otus.hw.Application - Started Application in 13.656 seconds (process running for 15.151)
+2025-09-30 08:45:19.724 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-30 08:45:19.724 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-09-30 08:45:19.727 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-09-30 08:46:03.557 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-30 08:46:03.559 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-09-30 08:46:03.579 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-09-30 08:46:07.472 [main] INFO  ru.otus.hw.Application - Starting Application using Java 17.0.12 with PID 5340 (C:\Users\annam\IdeaProjects\2025-05-otus-spring-Shatskikh\hw16-spring-data-rest\target\classes started by annam in C:\Users\annam\IdeaProjects\2025-05-otus-spring-Shatskikh\hw16-spring-data-rest)
+2025-09-30 08:46:07.472 [main] INFO  ru.otus.hw.Application - No active profile set, falling back to 1 default profile: "default"
+2025-09-30 08:46:08.926 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-09-30 08:46:09.048 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 113 ms. Found 5 JPA repository interfaces.
+2025-09-30 08:46:10.130 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-09-30 08:46:10.147 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-09-30 08:46:10.147 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2025-09-30 08:46:10.248 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-09-30 08:46:10.250 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2681 ms
+2025-09-30 08:46:10.678 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-09-30 08:46:10.691 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn1: url=jdbc:h2:mem:maindb user=SA
+2025-09-30 08:46:10.694 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-09-30 08:46:10.770 [main] INFO  liquibase.database - Set default schema name to PUBLIC
+2025-09-30 08:46:11.090 [main] INFO  liquibase.changelog - Reading resource: db/changelog/structure/001--create_start_tables.sql
+2025-09-30 08:46:11.107 [main] INFO  liquibase.changelog - Reading resource: db/changelog/data/001--insert_start_data.sql
+2025-09-30 08:46:11.156 [main] INFO  liquibase.changelog - Creating database history table with name: PUBLIC.DATABASECHANGELOG
+2025-09-30 08:46:11.445 [main] INFO  liquibase.changelog - Reading from PUBLIC.DATABASECHANGELOG
+2025-09-30 08:46:11.550 [main] INFO  liquibase.lockservice - Successfully acquired change log lock
+2025-09-30 08:46:11.554 [main] INFO  liquibase.command - Using deploymentId: 9211171554
+2025-09-30 08:46:11.558 [main] INFO  liquibase.changelog - Reading from PUBLIC.DATABASECHANGELOG
+2025-09-30 08:46:11.924 [main] INFO  liquibase.ui - Running Changeset: db/changelog/structure/001--create_start_tables.sql::raw::includeAll
+2025-09-30 08:46:12.042 [main] INFO  liquibase.changelog - Custom SQL executed
+2025-09-30 08:46:12.044 [main] INFO  liquibase.changelog - ChangeSet db/changelog/structure/001--create_start_tables.sql::raw::includeAll ran successfully in 118ms
+2025-09-30 08:46:12.063 [main] INFO  liquibase.ui - Running Changeset: db/changelog/data/001--insert_start_data.sql::raw::includeAll
+2025-09-30 08:46:12.083 [main] INFO  liquibase.changelog - Custom SQL executed
+2025-09-30 08:46:12.088 [main] INFO  liquibase.changelog - ChangeSet db/changelog/data/001--insert_start_data.sql::raw::includeAll ran successfully in 23ms
+2025-09-30 08:46:12.110 [main] INFO  liquibase.util - UPDATE SUMMARY
+2025-09-30 08:46:12.110 [main] INFO  liquibase.util - Run:                          2
+2025-09-30 08:46:12.110 [main] INFO  liquibase.util - Previously run:               0
+2025-09-30 08:46:12.110 [main] INFO  liquibase.util - Filtered out:                 0
+2025-09-30 08:46:12.110 [main] INFO  liquibase.util - -------------------------------
+2025-09-30 08:46:12.110 [main] INFO  liquibase.util - Total change sets:            2
+2025-09-30 08:46:12.110 [main] INFO  liquibase.util - Update summary generated
+2025-09-30 08:46:12.126 [main] INFO  liquibase.command - Update command completed successfully.
+2025-09-30 08:46:12.126 [main] INFO  liquibase.ui - Liquibase: Update has been successful. Rows affected: 4
+2025-09-30 08:46:12.133 [main] INFO  liquibase.lockservice - Successfully released change log lock
+2025-09-30 08:46:12.136 [main] INFO  liquibase.command - Command execution complete
+2025-09-30 08:46:12.382 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-09-30 08:46:12.608 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2025-09-30 08:46:12.703 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-09-30 08:46:13.559 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-09-30 08:46:16.064 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-09-30 08:46:16.079 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-09-30 08:46:17.465 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-09-30 08:46:17.853 [main] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name customUserDetailsService
+2025-09-30 08:46:19.429 [main] INFO  o.s.b.a.e.web.EndpointLinksResolver - Exposing 3 endpoints beneath base path '/actuator'
+2025-09-30 08:46:21.132 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-09-30 08:46:21.173 [main] INFO  ru.otus.hw.Application - Started Application in 14.19 seconds (process running for 15.491)
+2025-09-30 08:46:21.432 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-09-30 08:46:21.432 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-09-30 08:46:21.440 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 8 ms
+2025-09-30 08:47:04.077 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-09-30 08:47:04.080 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-09-30 08:47:04.103 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
