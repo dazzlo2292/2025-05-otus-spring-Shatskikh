@@ -1,0 +1,6 @@
+databaseChangeLog:
+  - includeAll:
+      path: db/migration/structure/
+
+  - includeAll:
+      path: db/migration/data/
